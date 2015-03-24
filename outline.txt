@@ -1,0 +1,27 @@
+* Animation
+  * Math
+    * Lerp
+    * Map
+  * Closed-Form
+    * Fixed start/end and fixed duration
+    * f(t) { el.style.opacity = t; }
+    * f(t) { el.style.left = t + "px"; }
+    * Mix animations
+      * Synchronization
+    * t as Time
+      * Calculating t
+      * Duration
+    * t transformations
+      * Easing
+        * Tracing the easing curve
+    * js Animator sample
+    * Controls - Play/Pause/Seek/Reverse/Speed
+    * t as Position (or other data)
+      * ViewPager indicator in Gopher
+      * Websites that use scroll position as t
+  * Integrated
+    * Simulation-based
+    * Cases where Closed-Form is not good enough
+      * Complex easing
+      * Unknown start/end
+      * User interaction while animating

@@ -1,0 +1,647 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css"></link>
+  </head>
+  <body>
+    <div class="slides">
+
+      <div class="slide_blank">
+      </div>
+
+      <div class="slide_animation">
+        <canvas width=700 height=350></canvas>
+        <h1>Animation</h1>
+      </div>
+
+      <div class="slide_outline">
+        <div class="standard_container">
+          <h1>Animation Types:</h1>
+          <ul>
+            <li>Closed-Form (Tweening)</li>
+            <li>Integration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide_closed_form_desc">
+        <div class="standard_container">
+          <h1>Closed-Form</h1>
+          <ul>
+            <li>Fixed start</li>
+            <li>Fixed end</li>
+            <li>Fixed duration</li>
+          </ul>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 0%;">
+              <div class="top_value"></div>
+              <div class="value">0</div>
+            </div>
+            <div class="pip" style="left: 100%;">
+              <div class="top_value"></div>
+              <div class="value">500</div>
+            </div>
+            <div class="ball b1"></div>
+            <div class="ball b2"></div>
+            <div class="ball b3"></div>
+            <div class="ball b4"></div>
+            <div class="arrow">==></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_closed_form">
+        <div class="standard_container">
+          <h1>Closed-Form</h1>
+          <div class="box"></div>
+          <span class="box_val"></span>
+          <code>
+function animate(t) { <comment>// 0.0 <= t <= 1.0</comment>
+  el.style.opacity = t;
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_closed_form2">
+        <div class="standard_container">
+          <h1>Closed-Form</h1>
+          <div class="box"></div>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 33%;">
+              <div class="top_value"></div>
+              <div class="value">100</div>
+            </div>
+            <div class="pip" style="left: 100%;">
+              <div class="top_value"></div>
+              <div class="value">300</div>
+            </div>
+          </div>
+          <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  el.style.width = <err>???</err>;
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_lerp">
+        <div class="standard_container">
+          <h1>Lerp</h1>
+          <div class="box"></div>
+          <span class="box_val">t = 0.25</span>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 33%;">
+              <div class="top_value"></div>
+              <div class="value">100</div>
+            </div>
+            <div class="pip" style="left: 100%;">
+              <div class="top_value"></div>
+              <div class="value">300</div>
+            </div>
+          </div>
+
+          <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  el.style.width = lerp(t, 100, 300);
+}
+
+function lerp(t, min, max) {
+  var range = max - min;      <comment>// 200</comment>
+  var valueInRange = t*range; <comment>// 50</comment>
+  return min + valueInRange;  <comment>// 150</comment>
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_lerp">
+        <div class="standard_container">
+          <h1>Lerp</h1>
+          <div class="box"></div>
+          <span class="box_val">t = 0.25</span>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 33%;">
+              <div class="top_value"></div>
+              <div class="value">100</div>
+            </div>
+            <div class="pip" style="left: 100%;">
+              <div class="top_value"></div>
+              <div class="value">300</div>
+            </div>
+          </div>
+
+          <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  el.style.width = lerp(t, 100, 300);
+}
+
+function lerp(t, min, max) {
+  var range = max - min;      <comment>// 200</comment>
+  var valueInRange = t*range; <comment>// 50</comment>
+  return min + valueInRange;  <comment>// 150</comment>
+}</code>
+
+          <h3>One Liner:</h3>
+          <code>function lerp(t, min, max) { return min + t*(max-min); }</code>
+          <br/>
+          <br/>
+          <h3>Float-Correct One Liner:</h3>
+          <code>function lerp(t, min, max) { return (1-t)*min + t*max; }</code>
+        </div>
+      </div>
+
+      <div class="slide_closed_form3">
+        <div class="standard_container">
+          <h1>Closed-Form</h1>
+          <div class="box"></div>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 33%;">
+              <div class="top_value"></div>
+              <div class="value">100</div>
+            </div>
+            <div class="pip" style="left: 100%;">
+              <div class="top_value"></div>
+              <div class="value">300</div>
+            </div>
+          </div>
+          <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  el.style.width = lerp(t, 100, 300);
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_complex">
+        <div class="standard_container">
+          <h1>Complex animations</h1>
+          <div class="box_container">
+            <div class="box b1"></div>
+          </div>
+          <div class="box_container">
+            <div class="box b2"></div>
+          </div>
+          <span class="text"></span>
+          <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  el.style.left = lerp(t, 0, 200);
+  el.style["border-radius"] = lerp(t, 0, 25);
+  el2.style.left = lerp(1-t, 0, 200);
+  var text = "Hello world!";
+  textContainer.textContent = text.substring(0, Math.round(lerp(t, 0, text.length)));
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_sync">
+        <div class="standard_container">
+          <h1>Synchronization</h1>
+          <div class="anim_container">
+            <div class="box_container">
+              <span class="header">Shopping List</span>
+              <div class="content">
+                <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                  <li>Item 6</li>
+                  <li>Item 7</li>
+                  <li>Item 8</li>
+                  <li>Item 9</li>
+                </ul>
+                <div class="button1">Approve</div>
+                <div class="button2">Decline</div>
+              </div>
+            </div>
+          </div>
+          <div class="right_side">
+            <div class="range_container">
+              <div class="range"></div>
+              <div class="pip" style="left: 0%">
+                <div class="value">0.0</div>
+              </div>
+              <div class="pip" style="left: 70%">
+                <div class="value">0.7</div>
+              </div>
+              <div class="pip" style="left: 100%">
+                <div class="value">1.0</div>
+              </div>
+            </div>
+            <div class="subrange fade" style="width: 30%; margin-left: 70%;">
+              <div class="name">Fade</div>
+            </div>
+            <div class="subrange grow">
+              <div class="name">Grow</div>
+            </div>
+
+            <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  (ﾉಠдಠ)ﾉ︵┻━┻
+}
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_map">
+        <div class="standard_container">
+          <h1>Mapping Ranges</h1>
+          <div class="range_container">
+            <div class="range"></div>
+            <div class="pip" style="left: 0%">
+              <div class="value">0.0</div>
+            </div>
+            <div class="pip" style="left: 70%">
+              <div class="value">0.7</div>
+            </div>
+            <div class="pip" style="left: 80%">
+              <div class="top_value">t</div>
+              <div class="value">0.8</div>
+            </div>
+            <div class="pip" style="left: 100%">
+              <div class="value">1.0</div>
+            </div>
+          </div>
+
+          <div class="subrange fade" style="width: 30%; margin-left: 70%;">
+            <div class="name">Fade</div>
+          </div>
+
+          <div class="mapper">
+            <div class="diagonal"></div>
+          </div>
+
+          <div class="range_container mapped">
+            <div class="range"></div>
+            <div class="pip" style="left: 0%">
+              <div class="value">0.0</div>
+            </div>
+            <div class="pip" style="left: 33%">
+              <div class="value">0.33</div>
+            </div>
+            <div class="pip" style="left: 100%">
+              <div class="value">1.0</div>
+            </div>
+          </div>
+          <code>
+<comment>//               0.7         1.0        0.8         0.0         1.0</comment>
+function map(sourceStart, sourceEnd, sourceVal, targetStart, targetEnd) {
+  var sourceRange = sourceEnd - sourceStart;
+  var sourceValInRange = sourceVal - sourceStart;
+  var pos = sourceValInRange / sourceRange;
+
+  var targetRange = targetEnd - targetStart;
+  var targetValInRange = targetRange * pos;
+  return targetStart + targetValInRange;
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_sync2">
+        <div class="standard_container">
+          <h1>Synchronization</h1>
+          <div class="anim_container">
+            <div class="box_container">
+              <span class="header">Shopping List</span>
+              <div class="content">
+                <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                  <li>Item 6</li>
+                  <li>Item 7</li>
+                  <li>Item 8</li>
+                  <li>Item 9</li>
+                </ul>
+                <div class="button1">Approve</div>
+                <div class="button2">Decline</div>
+              </div>
+            </div>
+          </div>
+          <div class="right_side">
+            <div class="range_container">
+              <div class="range"></div>
+              <div class="pip" style="left: 0%">
+                <div class="value">0.0</div>
+              </div>
+              <div class="pip" style="left: 70%">
+                <div class="value">0.7</div>
+              </div>
+              <div class="pip" style="left: 100%">
+                <div class="value">1.0</div>
+              </div>
+            </div>
+            <div class="subrange fade" style="width: 30%; margin-left: 70%;">
+              <div class="name">Fade</div>
+            </div>
+            <div class="subrange grow">
+              <div class="name">Grow</div>
+            </div>
+
+            <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  list.style.height = lerp(t, 50, 300);
+  content.style.opacity = partitionAnimation(t, 0.7, 1.0);
+}
+
+function partitionAnimation(t, rangeStart, rangeEnd) {
+  t = Math.max(rangeStart, Math.min(t, rangeEnd));
+  return map(t, rangeStart, rangeEnd, 0, 1);
+};
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_sync3">
+        <div class="standard_container">
+          <h1>Synchronization</h1>
+          <div class="anim_container">
+            <div class="box_container">
+              <span class="header">Shopping List</span>
+              <div class="content">
+                <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                  <li>Item 6</li>
+                  <li>Item 7</li>
+                  <li>Item 8</li>
+                  <li>Item 9</li>
+                </ul>
+                <div class="button1 button">Approve</div>
+                <div class="button2 button">Decline</div>
+              </div>
+            </div>
+          </div>
+          <div class="right_side">
+            <div class="range_container">
+              <div class="range"></div>
+              <div class="pip" style="left: 0%">
+                <div class="value">0.0</div>
+              </div>
+              <div class="pip" style="left: 100%">
+                <div class="value">1.0</div>
+              </div>
+            </div>
+            <div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div><div class="subrange fade" style="width: 10%;">
+              <div class="name">Fade</div>
+            </div>
+            <div class="subrange grow">
+              <div class="name">Grow</div>
+            </div>
+
+            <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  list.style.height = lerp(t, 50, 300);
+
+  for (var i = 0; i &lt; items.length; ++i) {
+    items[i].style.opacity = partitionAnimation(t, i*0.1, (i+1)*0.1);
+  }
+}
+
+function partitionAnimation(t, rangeStart, rangeEnd) {
+  t = Math.max(rangeStart, Math.min(t, rangeEnd));
+  return map(t, rangeStart, rangeEnd, 0, 1);
+};
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_integrating_t">
+        <div class="standard_container">
+          <h1>Integrating t</h1>
+          <h3>0.0 to 1.0 in 2000ms (constant speed)</h3>
+          <code>
+var t = 0;
+var duration = 2000; <comment>// milliseconds</comment>
+var lastTime = Date.now();
+
+function update() {
+  var currentTime = Date.now();
+  var delta = currentTime - lastTime;
+  lastTime = currentTime;
+
+  t += delta / duration;
+  t = Math.min(t, 1.0);
+  animate(t);
+}
+
+<comment>// Run update() as fast as possible (platform-dependent) until t == 1</comment>
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_transforming_t">
+        <div class="standard_container">
+          <h1>Transforming t</h1>
+          <code>
+function animate(t) {
+  el.style.left = lerp(t, 0, 200);
+}
+          </code>
+          <div class="split">
+            <h3>Linear t</h3>
+            <div class="box_container">
+              <div class="linear box"></div>
+            </div>
+            <code>
+function linear(t) {
+  animate(t);
+}
+            </code>
+            <canvas class="linear_curve" width=300 height=300></canvas>
+          </div>
+          <div class="split">
+            <h3>Ease-in t</h3>
+            <div class="box_container">
+              <div class="ease box"></div>
+            </div>
+            <code>
+function ease_in(t) {
+  animate(t*t*t*t*t);
+}
+            </code>
+            <canvas class="ease_curve" width=300 height=300></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_animator">
+        <div class="standard_container">
+          <h1>js Animator Library</h1>
+          <a href="https://github.com/iic-ninjas/animator">https://github.com/iic-ninjas/animator</a>
+          <ul>
+            <li>new Animator(animateFn)</li>
+            <li>playForward</li>
+            <li>playBackwards</li>
+            <li>stop</li>
+            <li>setDuration</li>
+            <li>setVal</li>
+            <li>Animator.lerp</li>
+            <li>Animator.map</li>
+            <li>Animator.partitionAnimation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide_testing">
+        <div class="standard_container">
+          <h1>Testing Animations</h1>
+          <div class="anim_container">
+            <div class="box_container">
+              <span class="header">Shopping List</span>
+              <div class="content">
+                <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                  <li>Item 6</li>
+                  <li>Item 7</li>
+                  <li>Item 8</li>
+                  <li>Item 9</li>
+                </ul>
+                <div class="button1 button">Approve</div>
+                <div class="button2 button">Decline</div>
+              </div>
+            </div>
+          </div>
+          <div class="right_side">
+            <code>
+function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
+  list.style.height = lerp(t, 50, 300);
+
+  for (var i = 0; i &lt; items.length; ++i) {
+    items[i].style.opacity = partitionAnimation(t, i*0.1, (i+1)*0.1);
+  }
+}
+            </code>
+            <input type="range" min=0 max=1 step=0.001 value=0 />
+            <span class="val"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_other">
+        <div class="standard_container">
+          <h1>Other Uses</h1>
+          <video src="gopher.mp4" autoplay=true loop=true></video>
+          <code>
+function animate(t) { <comment>// t = ViewPager offset</comment>
+  t *= pips.length;
+  for (var i = 0; i &lt; pips.length; ++i) {
+    <comment>// distance between t and current pip, capped at 1.0</comment>
+    var distance = Math.min(1, Math.abs(i - t));
+    pips[i].opacity = lerp(distance, 1.0, 0.5);
+    pips[i].radius = lerp(distance, 50, 20);
+  }
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_integration">
+        <div class="standard_container">
+          <h1>Integration</h1>
+          <ul>
+            <li>Simulation, not animation</li>
+            <li>No fixed start state</li>
+            <li>No fixed end state</li>
+            <li>Based on speed instead of duration (and even that is not constant)</li>
+            <li>Technically simpler</li>
+            <li>Practically harder (depends on your animation)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide_integration_example">
+        <div class="standard_container">
+          <h1>Example</h1>
+          <div class="box_container">
+            <div class="box"></div>
+          </div>
+          <code>
+var velocity = 0;
+var position = 0;
+var direction = 1;
+
+function animate(deltaTime) { <comment>// 0 &lt;= deltaTime</comment>
+  velocity += 500 * deltaTime * direction;
+
+  position += velocity * deltaTime;
+
+  if (position &gt; 100 || position &lt; 0) {
+    position = Math.max(0, Math.min(position, 100));
+    velocity = -this.velocity * 0.4;
+  }
+
+  el.style.left = position + "%";
+}
+          </code>
+        </div>
+      </div>
+
+      <div class="slide_q1">
+        <div class="standard_container">
+          <h1>Q&A</h1>
+          <canvas width=800 height=800></canvas>
+        </div>
+      </div>
+
+    </div>
+    <div class="slide_counter"></div>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="animator.js"></script>
+    <script type="text/javascript" src="integrator.js"></script>
+    <script type="text/javascript" src="range.js"></script>
+    <script type="text/javascript" src="vector.js"></script>
+    <script type="text/javascript" src="curve.js"></script>
+    <script type="text/javascript" src="slides/animation.js"></script>
+    <script type="text/javascript" src="slides/closed_form.js"></script>
+    <script type="text/javascript" src="slides/closed_form2.js"></script>
+    <script type="text/javascript" src="slides/transform_t.js"></script>
+    <script type="text/javascript" src="slides/beyond.js"></script>
+    <script type="text/javascript" src="slides/complex.js"></script>
+    <script type="text/javascript" src="slides/sync.js"></script>
+    <script type="text/javascript" src="slides/sync3.js"></script>
+    <script type="text/javascript" src="slides/testing.js"></script>
+    <script type="text/javascript" src="slides/integration_example2.js"></script>
+    <script type="text/javascript" src="slides/spiral.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+window.allSlides = window.allSlides || {};
+

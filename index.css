@@ -1,0 +1,615 @@
+body {
+  margin: 0;
+  padding: 50px;
+  font-family: helvetica;
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slides > div {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slide_counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+h1 {
+  font-size: 90px;
+  margin: 0 0 20px 0;
+}
+
+h2 {
+  font-size: 70px;
+  margin: 0 0 20px 0;
+}
+
+h3 {
+  font-size: 35px;
+  margin: 20px 0 10px 0;
+}
+
+ul {
+  margin-top: 60px;
+}
+
+li {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+li.highlighted {
+  color: blue;
+}
+
+.standard_container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.range_container {
+  margin: 70px 0;
+  height: 40px;
+  position: relative;
+}
+
+.range_container .range {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  border-top: 5px solid black;
+}
+
+.range_container .pip {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 5px solid grey;
+}
+
+.range_container .pip .value {
+  position: absolute;
+  bottom: -30px;
+  left: -10px;
+  font-size: 20px;
+}
+
+.range_container .pip .top_value {
+  position: absolute;
+  top: -30px;
+  left: -10px;
+  font-size: 20px;
+}
+
+/* ANIMATION slide */
+.slide_animation h1 {
+  font-size: 170px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  margin-top: -60px;
+}
+
+.slide_animation canvas {
+  display: block;
+  margin: 0 auto;
+  padding-left: 120px;
+}
+
+code {
+  white-space: pre;
+  font-size: 30px;
+  font-family: inconsolata, monospace;
+  display: block;
+}
+
+code comment {
+  color: grey;
+}
+
+code err {
+  color: red;
+}
+
+/* CLOSED-FORM-DESC slide */
+.slide_closed_form_desc .ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: #FF0000;
+  position: absolute;
+  top: -5px;
+}
+
+.slide_closed_form_desc .b1 {
+  left: 100px;
+  background: #FF0000;
+  z-index: 4;
+}
+.slide_closed_form_desc .b2 {
+  left: 80px;
+  background: #FF4444;
+  opacity: 0.9;
+  z-index: 3;
+}
+.slide_closed_form_desc .b3 {
+  left: 60px;
+  background: #FF8888;
+  opacity: 0.8;
+  z-index: 2;
+}
+.slide_closed_form_desc .b4 {
+  left: 40px;
+  background: #FFcccc;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.slide_closed_form_desc .arrow {
+  position: absolute;
+  font-size: 40px;
+  top: 40px;
+  left: 80px;
+  font-family: inconsolata, monospace;
+}
+
+
+/* CLOSED-FORM slide */
+.slide_closed_form .box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.slide_closed_form .box_val {
+  font-size: 20px;
+  font-family: inconsolata, monospace;
+  line-height: 100px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.slide_closed_form code {
+  display: block;
+}
+
+/* CLOSED-FORM2 slide */
+.slide_closed_form2 .box, .slide_closed_form3 .box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+  display: block;
+}
+
+.slide_closed_form2 .range_container, .slide_closed_form3 .range_container {
+  margin-top: 5px;
+  width: 300px;
+  margin-bottom: 0;
+}
+
+/* LERP slide */
+.slide_lerp .box {
+  width: 150px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.slide_closed_form .box_val {
+  font-size: 20px;
+  font-family: inconsolata, monospace;
+  line-height: 100px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.slide_lerp .range_container {
+  margin-top: 5px;
+  width: 300px;
+  margin-bottom: 0;
+}
+
+/* TRANSFORM slide */
+.slide_transforming_t .split {
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.slide_transforming_t .box_container {
+  position: relative;
+  height: 100px;
+}
+.slide_transforming_t .box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+}
+
+/* BEYOND slide */
+.slide_beyond .box_container {
+  position: relative;
+  height: 100px;
+}
+.slide_beyond .box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+}
+
+/* COMPLEX slide */
+.slide_complex .box_container {
+  position: relative;
+  height: 100px;
+  margin-bottom: 5px;
+}
+.slide_complex .box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+}
+
+/* SYNC slide */
+.slide_sync .anim_container {
+  width: 200px;
+  height: 600px;
+  display: inline-block;
+}
+
+.slide_sync .box_container {
+  width: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.slide_sync .box_container .header {
+  padding: 10px;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  display: block;
+}
+
+.slide_sync .box_container ul {
+  margin: 0;
+}
+
+.slide_sync .box_container .content li {
+  font-size: 20px;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.slide_sync .box_container .content .button1,
+.slide_sync .box_container .content .button2 {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 65px;
+}
+
+.slide_sync .right_side {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  position: relative;
+  margin-left: 35px;
+}
+
+.slide_sync .range_container {
+  margin: 20px 0 30px;
+}
+
+.slide_sync .subrange {
+  border: 1px solid black;
+  border-top: none;
+  margin-bottom: 20px;
+  position: relative;
+  height: 10px;
+}
+
+.slide_sync .subrange .name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -20px;
+}
+
+/* MAP slide */
+.slide_map .range_container {
+  margin: 20px 0 30px;
+}
+
+.slide_map .subrange {
+  border: 1px solid black;
+  border-top: none;
+  margin-bottom: 20px;
+  position: relative;
+  height: 10px;
+}
+
+.slide_map .subrange .name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -20px;
+}
+
+.slide_map .mapper {
+  height: 100px;
+  border-right: 3px solid black;
+  margin-bottom: 50px;
+}
+
+.slide_map .mapper .diagonal {
+  width: 70%;
+  height: 100%;
+  background: url(http://i.piccy.info/i7/c7a432fe0beb98a3a66f5b423b430423/1-5-1789/1066503/lol.png);
+  background-size: 100% 100%;
+}
+
+.slide_map code {
+  margin-top: 80px;
+}
+
+/* SYNC slide 2 */
+.slide_sync2 .anim_container {
+  width: 200px;
+  height: 600px;
+  display: inline-block;
+}
+
+.slide_sync2 .box_container {
+  width: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.slide_sync2 .box_container .header {
+  padding: 10px;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  display: block;
+}
+
+.slide_sync2 .box_container ul {
+  margin: 0;
+}
+
+.slide_sync2 .box_container .content li {
+  font-size: 20px;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.slide_sync2 .box_container .content .button1,
+.slide_sync2 .box_container .content .button2 {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 65px;
+}
+
+.slide_sync2 .right_side {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  position: relative;
+  margin-left: 35px;
+}
+
+.slide_sync2 .range_container {
+  margin: 20px 0 30px;
+}
+
+.slide_sync2 .subrange {
+  border: 1px solid black;
+  border-top: none;
+  margin-bottom: 20px;
+  position: relative;
+  height: 10px;
+}
+
+.slide_sync2 .subrange .name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -20px;
+}
+
+/* SYNC slide 2 */
+.slide_sync3 .anim_container {
+  width: 200px;
+  height: 600px;
+  display: inline-block;
+}
+
+.slide_sync3 .box_container {
+  width: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.slide_sync3 .box_container .header {
+  padding: 10px;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  display: block;
+}
+
+.slide_sync3 .box_container ul {
+  margin: 0;
+}
+
+.slide_sync3 .box_container .content li {
+  font-size: 20px;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.slide_sync3 .box_container .content .button1,
+.slide_sync3 .box_container .content .button2 {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 65px;
+}
+
+.slide_sync3 .right_side {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  position: relative;
+  margin-left: 35px;
+}
+
+.slide_sync3 .range_container {
+  margin: 20px 0 30px;
+}
+
+.slide_sync3 .subrange {
+  border: 1px solid black;
+  border-top: none;
+  margin-bottom: 20px;
+  position: relative;
+  height: 10px;
+}
+
+.slide_sync3 .subrange .name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -20px;
+}
+
+.slide_sync3 .subrange.fade {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.slide_animator a {
+  font-size: 50px;
+}
+
+.slide_animator li {
+  font-family: inconsolata, monospace;
+}
+
+/* TESTING slide */
+.slide_testing .anim_container {
+  width: 200px;
+  height: 600px;
+  display: inline-block;
+}
+
+.slide_testing .box_container {
+  width: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.slide_testing .box_container .header {
+  padding: 10px;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  display: block;
+}
+
+.slide_testing .box_container ul {
+  margin: 0;
+}
+
+.slide_testing .box_container .content li {
+  font-size: 20px;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.slide_testing .box_container .content .button1,
+.slide_testing .box_container .content .button2 {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 65px;
+}
+
+.slide_testing .right_side {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  position: relative;
+  margin-left: 35px;
+}
+
+.slide_testing input {
+  width: 100%;
+  display: block;
+}
+
+/* OTHER slide */
+
+.slide_other video {
+  display: inline-block;
+  vertical-align: top;
+}
+.slide_other code {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  width: 450px;
+}
+
+/* EXAMPLE slide */
+.slide_integration_example .box_container {
+  position: relative;
+  height: 100px;
+}
+
+.slide_integration_example .box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  background: lightblue;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

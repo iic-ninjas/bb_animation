@@ -28,6 +28,7 @@ window.allSlides = window.allSlides || {};
   };
 
   Complex.prototype.animate = function(t) {
+    t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.b1.style.left = Animator.lerp(t, 0, 500);
     this.b1.style["border-radius"] = Animator.lerp(t, 0, 50) + "px";
     this.b2.style.left = Animator.lerp(1-t, 0, 500);

@@ -25,6 +25,7 @@ window.allSlides = window.allSlides || {};
   };
 
   ClosedForm2.prototype.animate = function(t) {
+    t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.el.style.width = Animator.lerp(t, 100, 300) + "px";
   };
 

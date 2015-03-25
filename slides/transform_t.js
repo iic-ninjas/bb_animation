@@ -2,6 +2,10 @@ window.allSlides = window.allSlides || {};
 
 (function() {
 
+  function easeInOut(t) {
+    return Math.cos((t + 1) * Math.PI) * 0.5 + 0.5;
+  }
+
   function TransformT() {
   }
 
@@ -26,8 +30,11 @@ window.allSlides = window.allSlides || {};
     drawCurve(this.easeCurve.getContext("2d"),
               parseInt(this.easeCurve.getAttribute("width")),
               parseInt(this.easeCurve.getAttribute("height")),
-              function(t) { return t*t*t*t*t; },
+              function(t) { return easeInOut(t); },
               0, 1);
+
+
+
   };
 
   TransformT.prototype.show = function() {
@@ -42,7 +49,7 @@ window.allSlides = window.allSlides || {};
 
   TransformT.prototype.animate = function(t) {
     this.linear.style.left = Animator.lerp(t, 0, 200) + "px";
-    this.ease.style.left = Animator.lerp(t*t*t*t*t, 0, 200) + "px";
+    this.ease.style.left = Animator.lerp(easeInOut(t), 0, 200) + "px";
   };
 
   TransformT.prototype.toggle = function() {

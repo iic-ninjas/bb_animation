@@ -28,6 +28,7 @@ window.allSlides = window.allSlides || {};
   };
 
   Sync.prototype.animate = function(t) {
+    t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.box.style.height = Animator.lerp(t, 50, 360);
     for (var i = 0; i < this.items.length; ++i) {
       this.items[i].style.opacity = Animator.partitionAnimation(t, (i+0.5)*0.1, (i+1.5)*0.1);

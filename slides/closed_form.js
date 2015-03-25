@@ -26,6 +26,7 @@ window.allSlides = window.allSlides || {};
   };
 
   ClosedForm.prototype.animate = function(t) {
+    t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.el.style.opacity = t;
     this.val.textContent = "t = " + t.toFixed(3);
   };

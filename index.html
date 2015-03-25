@@ -26,7 +26,7 @@
 
       <div class="slide_closed_form_desc">
         <div class="standard_container">
-          <h1>Closed-Form</h1>
+          <h1>Tweening</h1>
           <ul>
             <li>Fixed start</li>
             <li>Fixed end</li>
@@ -190,9 +190,9 @@ function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
           <span class="text"></span>
           <code>
 function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
-  el.style.left = lerp(t, 0, 200);
+  el.style.left = lerp(t, 0, 500);
   el.style["border-radius"] = lerp(t, 0, 25);
-  el2.style.left = lerp(1-t, 0, 200);
+  el2.style.left = lerp(1-t, 0, 500);
   var text = "Hello world!";
   textContainer.textContent = text.substring(0, Math.round(lerp(t, 0, text.length)));
 }
@@ -297,10 +297,10 @@ function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
 function map(sourceStart, sourceEnd, sourceVal, targetStart, targetEnd) {
   var sourceRange = sourceEnd - sourceStart;
   var sourceValInRange = sourceVal - sourceStart;
-  var pos = sourceValInRange / sourceRange;
+  var positionInRange = sourceValInRange / sourceRange;
 
   var targetRange = targetEnd - targetStart;
-  var targetValInRange = targetRange * pos;
+  var targetValInRange = targetRange * positionInRange;
   return targetStart + targetValInRange;
 }
           </code>
@@ -452,10 +452,10 @@ var lastTime = Date.now();
 
 function update() {
   var currentTime = Date.now();
-  var delta = currentTime - lastTime;
+  var deltaTime = currentTime - lastTime;
   lastTime = currentTime;
 
-  t += delta / duration;
+  t += deltaTime / duration;
   t = Math.min(t, 1.0);
   animate(t);
 }
@@ -475,27 +475,60 @@ function animate(t) {
           </code>
           <div class="split">
             <h3>Linear t</h3>
-            <div class="box_container">
-              <div class="linear box"></div>
-            </div>
-            <code>
-function linear(t) {
+            <code>function linear(t) {
   animate(t);
 }
             </code>
+            <div class="box_container">
+              <div class="linear box"></div>
+            </div>
             <canvas class="linear_curve" width=300 height=300></canvas>
           </div>
           <div class="split">
-            <h3>Ease-in t</h3>
+            <h3>Ease-in-out t</h3>
+            <code>function easeInOut(t) {
+  animate(Math.cos((t + 1) * Math.PI) * 0.5 + 0.5);
+}
+            </code>
             <div class="box_container">
               <div class="ease box"></div>
             </div>
+            <canvas class="ease_curve" width=300 height=300></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide_transforming_t2">
+        <div class="standard_container">
+          <h1>Transforming t</h1>
+          <code>
+function animate(t) {
+  el.style.left = lerp(anticipateOvershoot(t), 0, 200);
+}
+          </code>
+          <h3>Anticipate/Overshoot t</h3>
+          <div class="split">
+            <div class="box_container">
+              <div class="ease box"></div>
+            </div>
+            <canvas class="ease_curve" width=300 height=300></canvas>
+          </div>
+          <div class="split">
             <code>
-function ease_in(t) {
-  animate(t*t*t*t*t);
+<comment>// Ported from Android SDK</comment>
+function a(t, s) {
+  return t * t * ((s + 1) * t - s);
+}
+
+function o(t, s) {
+  return t * t * ((s + 1) * t + s);
+}
+
+function anticipateOvershoot(t) {
+  if (t &lt; 0.5) return 0.5 * a(t * 2.0, 3);
+  else return 0.5 * (o(t * 2.0 - 2.0, 3) + 2.0);
 }
             </code>
-            <canvas class="ease_curve" width=300 height=300></canvas>
           </div>
         </div>
       </div>
@@ -612,7 +645,29 @@ function animate(deltaTime) { <comment>// 0 &lt;= deltaTime</comment>
 
   el.style.left = position + "%";
 }
+
+<comment>// function update() {
+//   var currentTime = Date.now();
+//   var deltaTime = currentTime - lastTime;
+//   lastTime = currentTime;
+//
+//   animate(deltaTime);
+// }</comment>
           </code>
+        </div>
+      </div>
+
+      <div class="slide_limits">
+        <div class="standard_container">
+          <h1>Limits of Tweening</h1>
+          <div class="gravity top on">Target</div>
+          <div class="box_container">
+            <div class="box tween"></div>
+          </div>
+          <div class="box_container">
+            <div class="box sim"></div>
+          </div>
+          <div class="gravity bottom">Target</div>
         </div>
       </div>
 
@@ -631,16 +686,19 @@ function animate(deltaTime) { <comment>// 0 &lt;= deltaTime</comment>
     <script type="text/javascript" src="range.js"></script>
     <script type="text/javascript" src="vector.js"></script>
     <script type="text/javascript" src="curve.js"></script>
+    <script type="text/javascript" src="easing.js"></script>
     <script type="text/javascript" src="slides/animation.js"></script>
     <script type="text/javascript" src="slides/closed_form.js"></script>
     <script type="text/javascript" src="slides/closed_form2.js"></script>
     <script type="text/javascript" src="slides/transform_t.js"></script>
+    <script type="text/javascript" src="slides/transform_t2.js"></script>
     <script type="text/javascript" src="slides/beyond.js"></script>
     <script type="text/javascript" src="slides/complex.js"></script>
     <script type="text/javascript" src="slides/sync.js"></script>
     <script type="text/javascript" src="slides/sync3.js"></script>
     <script type="text/javascript" src="slides/testing.js"></script>
     <script type="text/javascript" src="slides/integration_example2.js"></script>
+    <script type="text/javascript" src="slides/limits.js"></script>
     <script type="text/javascript" src="slides/spiral.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>

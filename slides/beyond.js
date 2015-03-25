@@ -2,40 +2,54 @@ window.allSlides = window.allSlides || {};
 
 (function() {
 
-  function Beyond() {
+  function a(t, s) {
+    return t * t * ((s + 1) * t - s);
   }
 
-  Beyond.prototype.init = function(container) {
+  function o(t, s) {
+    return t * t * ((s + 1) * t + s);
+  }
+
+  function anticipateOvershoot(t) {
+    if (t < 0.5) return 0.5 * a(t * 2.0, 3);
+    else return 0.5 * (o(t * 2.0 - 2.0, 3) + 2.0);
+  }
+
+  function TransformT() {
+  }
+
+  TransformT.prototype.init = function(container) {
     this.container = container;
-    this.el = container.querySelector(".box");
-    this.curve = container.querySelector(".curve");
+    this.ease = container.querySelector(".box.ease");
+    this.easeCurve = container.querySelector(".ease_curve");
     this.visible = false;
     this.animator = new Animator(this.animate.bind(this));
-    this.animator.setDuration(1400);
+    this.animator.setDuration(2000);
     this.animator.setVal(1);
 
-    drawCurve(this.curve.getContext("2d"),
-              parseInt(this.curve.getAttribute("width")),
-              parseInt(this.curve.getAttribute("height")),
-              this.ease,
+    drawCurve(this.easeCurve.getContext("2d"),
+              parseInt(this.easeCurve.getAttribute("width")),
+              parseInt(this.easeCurve.getAttribute("height")),
+              function(t) { return anticipateOvershoot(t); },
               0, 1);
   };
 
-  Beyond.prototype.show = function() {
+  TransformT.prototype.show = function() {
     this.visible = true;
     this.toggle();
   };
 
-  Beyond.prototype.hide = function() {
+  TransformT.prototype.hide = function() {
     this.visible = false;
     this.animator.stop();
   };
 
-  Beyond.prototype.animate = function(t) {
-    this.el.style.left = Animator.lerp(this.ease(t), 0, 400) + "px";
+  TransformT.prototype.animate = function(t) {
+    t = Animator.partitionAnimation(t, 0.2, 0.8);
+    this.ease.style.left = Animator.lerp(anticipateOvershoot(t), 0, 200) + "px";
   };
 
-  Beyond.prototype.toggle = function() {
+  TransformT.prototype.toggle = function() {
     var promise = null;
     if (this.animator.playDirection == 1) {
       promise = this.animator.playBackwards();
@@ -50,15 +64,10 @@ window.allSlides = window.allSlides || {};
     });
   };
 
-  Beyond.prototype.ease = function(t) {
-    return 0.45 + Math.sin(1.5*t*Math.PI + Math.PI*1.25)*0.6;
-  };
 
+  var transformT = new TransformT();
 
-  var beyond = new Beyond();
-
-  window.allSlides["slide_beyond"] = beyond;
+  window.allSlides["slide_transforming_t2"] = transformT;
 
 })();
-
 

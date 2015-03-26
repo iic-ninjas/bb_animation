@@ -9,6 +9,7 @@ window.allSlides = window.allSlides || {};
     this.container = container;
     this.box = container.querySelector(".box_container");
     this.content = container.querySelector(".content");
+    this.pip = container.querySelector(".pip_t");
     this.visible = false;
     this.animator = new Animator(this.animate.bind(this));
     this.animator.setDuration(2000);
@@ -29,6 +30,10 @@ window.allSlides = window.allSlides || {};
     t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.box.style.height = Animator.lerp(t, 50, 360);
     this.content.style.opacity = Animator.partitionAnimation(t, 0.7, 1);
+
+    if (this.pip) {
+      this.pip.style.left = t*100 + "%";
+    }
   };
 
   Sync.prototype.toggle = function() {

@@ -14,7 +14,7 @@ window.allSlides = window.allSlides || {};
     this.text = "Hello world!";
     this.animator = new Animator(this.animate.bind(this));
     this.animator.setDuration(2000);
-    this.animator.setVal(1);
+    this.animator.setVal(0);
   };
 
   Complex.prototype.show = function() {
@@ -30,7 +30,7 @@ window.allSlides = window.allSlides || {};
   Complex.prototype.animate = function(t) {
     t = Animator.partitionAnimation(t, 0.1, 0.9);
     this.b1.style.left = Animator.lerp(t, 0, 500);
-    this.b1.style["border-radius"] = Animator.lerp(t, 0, 50) + "px";
+    this.b1.style["border-radius"] = Animator.lerp(t, 50, 0) + "px";
     this.b2.style.left = Animator.lerp(1-t, 0, 500);
     this.textContainer.textContent = this.text.substring(0, Math.round(Animator.lerp(t, 0, this.text.length)));
   };

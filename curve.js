@@ -20,7 +20,7 @@ function drawCurve(canvasCtx, width, height, fn, min, max) {
   canvasCtx.strokeStyle = "white";
   canvasCtx.lineWidth = 2;
   canvasCtx.beginPath();
-  canvasCtx.moveTo(0, height);
+  canvasCtx.moveTo(0, maxHeight);
   for (var i = 0; i < width; ++i) {
     var pos = Animator.map(i, 0, width, min, max);
     var x = i;

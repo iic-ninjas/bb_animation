@@ -11,6 +11,7 @@ window.allSlides = window.allSlides || {};
     this.content = container.querySelector(".content");
     this.items = container.querySelectorAll("li");
     this.buttons = container.querySelectorAll(".button");
+    this.pip = container.querySelector(".pip_t");
     this.visible = false;
     this.animator = new Animator(this.animate.bind(this));
     this.animator.setDuration(2000);
@@ -37,6 +38,8 @@ window.allSlides = window.allSlides || {};
     for (var i = 0; i < this.buttons.length; ++i) {
       this.buttons[i].style.opacity = Animator.partitionAnimation(t, 0.9, 1.0);
     }
+
+    this.pip.style.left = t*100 + "%";
   };
 
   Sync.prototype.toggle = function() {

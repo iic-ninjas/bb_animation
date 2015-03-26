@@ -122,6 +122,37 @@ code err {
   color: red;
 }
 
+code v1 {
+  color: red;
+}
+code v2 {
+  color: red;
+}
+code v3 {
+  color: purple;
+}
+code v4 {
+  color: blue;
+}
+code v5 {
+  color: blue;
+}
+code v6 {
+  color: green;
+}
+code v7 {
+  color: #004400;
+}
+code v8 {
+  color: #808000;
+}
+code v9 {
+  color: darkblue;
+}
+code v10 {
+  color: #000060;
+}
+
 /* CLOSED-FORM-DESC slide */
 .slide_closed_form_desc .ball {
   width: 50px;
@@ -301,6 +332,11 @@ code err {
   height: 100px;
   border: 1px solid blue;
   background: lightblue;
+}
+
+.slide_complex .text {
+  display: block;
+  height: 50px;
 }
 
 /* SYNC slide */
@@ -619,6 +655,79 @@ code err {
   vertical-align: top;
   margin-left: 20px;
   width: 450px;
+}
+
+/* COOL slide */
+.slide_cool .mokojin {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slide_cool .icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border-color: red;
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
+  background: lightblue;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.slide_cool .name {
+  width: 150px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+}
+
+.slide_cool .background {
+  height: 30px;
+  background: red;
+  top: 0;
+  left: -10px;
+  position: absolute;
+  transform: skewX(30deg);
+}
+
+.slide_cool .shine {
+  width: 30px;
+  height: 30px;
+  background: white;
+  opacity: 0.5;
+  top: 0;
+  position: absolute;
+  transform: skewX(-30deg);
+}
+
+.slide_cool .text {
+  display: block;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+}
+
+.slide_cool .pages_container {
+  width: 600px;
+  height: 600px;
+  position: relative;
+}
+
+.slide_cool .page {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid blue;
+  background: lightblue;
+  border-radius: 5px;
+  position: absolute;
 }
 
 /* EXAMPLE slide */

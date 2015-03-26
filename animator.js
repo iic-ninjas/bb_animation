@@ -29,7 +29,7 @@ Animator.prototype.playForward = function() {
     if (this.playDirection == 1) {
       return this.pendingPromise;
     } else {
-      this.pendingPromiseReject();
+      //this.pendingPromiseReject();
     }
   } else if (this.val == 1.0) {
     this.playDirection = 1;
@@ -48,7 +48,7 @@ Animator.prototype.playBackwards = function() {
     if (this.playDirection == -1) {
       return this.pendingPromise;
     } else {
-      this.pendingPromiseReject();
+      //this.pendingPromiseReject();
     }
   } else if (this.val == 0.0) {
     this.playDirection = 0;
@@ -66,7 +66,7 @@ Animator.prototype.stop = function() {
   this.isPlaying = false;
   this.lastFrameTimestamp = null;
   if (this.pendingPromise) {
-    this.pendingPromiseReject();
+    //this.pendingPromiseReject();
   }
 };
 

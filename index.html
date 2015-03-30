@@ -361,7 +361,13 @@ function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
 function partitionAnimation(t, rangeStart, rangeEnd) {
   t = Math.max(rangeStart, Math.min(t, rangeEnd));
   return map(t, rangeStart, rangeEnd, 0, 1);
-};
+}
+
+function map(sourceStart, sourceEnd, sourceVal, targetStart, targetEnd) {
+  var sourceRange = sourceEnd - sourceStart;
+  var targetRange = targetEnd - targetStart;
+  return targetStart + targetRange * ((sourceVal - sourceStart) / sourceRange);
+}
             </code>
           </div>
         </div>

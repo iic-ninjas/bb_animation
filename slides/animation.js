@@ -46,11 +46,9 @@ window.allSlides = window.allSlides || {};
 
   animationSlide.prototype.animate = function(t) {
     this.ctx.clearRect(0, 0, this.width, this.height);
-    var offset = 0;
     for (var i = 0; i < 7; ++i) {
-      offset = -Math.sin(i/7.0) / 4;
+      var offset = -Math.sin(i/7.0) / 4;
       var pos = Math.max(0, t + (offset * (1-t)));
-      //this.ctx.strokeStyle = this.colors[i];
       this.ctx.beginPath();
       this.ctx.arc(this.width/2, this.height, this.startRadius + (i+1) * this.ctx.lineWidth, Math.PI, Math.PI + (pos*Math.PI), false);
       this.ctx.stroke();

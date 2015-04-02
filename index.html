@@ -295,13 +295,13 @@ function animate(t) { <comment>// 0.0 &lt;= t &lt;= 1.0</comment>
           <code>
 <comment>//               0.7         1.0        0.8         0.0         1.0</comment>
 function map(<v1>sourceStart</v1>, <v2>sourceEnd</v2>, <v3>sourceVal</v3>, <v4>targetStart</v4>, <v5>targetEnd</v5>) {
-  var <v6>sourceRange</v6> = <v2>sourceEnd</v2> - <v1>sourceStart</v1>;
-  var <v7>sourceValInRange</v7> = <v3>sourceVal</v3> - <v1>sourceStart</v1>;
-  var <v8>positionInRange</v8> = <v7>sourceValInRange</v7> / <v6>sourceRange</v6>;
+  var <v6>sourceRange</v6> = <v2>sourceEnd</v2> - <v1>sourceStart</v1>; <comment>// 0.3</comment>
+  var <v7>sourceValInRange</v7> = <v3>sourceVal</v3> - <v1>sourceStart</v1>; <comment>// 0.1</comment>
+  var <v8>positionInRange</v8> = <v7>sourceValInRange</v7> / <v6>sourceRange</v6>; <comment>// 0.33</comment>
 
-  var <v9>targetRange</v9> = <v5>targetEnd</v5> - <v4>targetStart</v4>;
-  var <v10>targetValInRange</v10> = <v9>targetRange</v9> * <v8>positionInRange</v8>;
-  return <v4>targetStart</v4> + <v10>targetValInRange</v10>;
+  var <v9>targetRange</v9> = <v5>targetEnd</v5> - <v4>targetStart</v4>; <comment>// 1.0</comment>
+  var <v10>targetValInRange</v10> = <v9>targetRange</v9> * <v8>positionInRange</v8>; <comment>// 0.33 * 1.0 = 0.33</comment>
+  return <v4>targetStart</v4> + <v10>targetValInRange</v10>; <comment>// 0 + 0.33 = 0.33</comment>
 }
           </code>
         </div>
@@ -470,6 +470,10 @@ function update() {
 }
 
 <comment>// Run update() as fast as possible (platform-dependent) until t == 1</comment>
+
+<comment>// “Begin at the beginning," the King said, very gravely,</comment>
+<comment>// "and go on till you come to the end: then stop.”</comment>
+<comment>//                   ― Lewis Carroll, Alice in Wonderland</comment>
           </code>
         </div>
       </div>
